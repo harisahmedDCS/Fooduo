@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {getToken} from '../../utils/Constants';
-import {setAuthToken} from '../../utils/setAuthToken';
+
 import {
   REGISTER_SUCCESS,
   REGISTER_FAIL,
@@ -13,9 +13,6 @@ import {
 
 //LOAD USER
 export const loadUser = () => async dispatch => {
-  if (getToken) {
-    setAuthToken(getToken);
-  }
   try {
     console.log('first', getToken);
     const token = await getToken;

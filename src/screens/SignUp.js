@@ -9,18 +9,18 @@ import {
   TouchableOpacity,
   TextInput,
 } from 'react-native';
-import Button from '../../components/Button';
-import Input from '../../components/Input';
+import Button from '../components/Button';
+import Input from '../components/Input';
 import {
   SWidth,
   SHeight,
   MainColor,
   SecondaryFontColor,
   getToken,
-} from '../../utils/Constants';
+} from '../utils/Constants';
 import {useDispatch, useSelector} from 'react-redux';
-import {setAlert} from '../../redux/actions/alert';
-import {register} from '../../redux/actions/auth';
+import {setAlert} from '../redux/actions/alert';
+import {register} from '../redux/actions/auth';
 
 const SignUpScreen = ({navigation}) => {
   const [formData, setFormData] = useState({

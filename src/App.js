@@ -4,13 +4,9 @@ import StackNavigator from './navigator';
 import {loadUser} from './redux/actions/auth';
 import {getToken} from './utils/Constants';
 import {useDispatch} from 'react-redux';
-import {setAuthToken} from './utils/setAuthToken';
 import messaging from '@react-native-firebase/messaging';
+import 'react-native-gesture-handler';
 const App = () => {
-  if (getToken) {
-    setAuthToken(getToken);
-  }
-
   const dispatch = useDispatch();
   useEffect(() => {
     async function onAppBootstrap() {

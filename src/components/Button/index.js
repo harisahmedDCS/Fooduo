@@ -21,7 +21,7 @@ const index = ({
   const {loading} = auth;
   useEffect(() => {
     if (loading === true) {
-      navigation.navigate('CustomDrawer');
+      navigation.navigate('BottomTab');
     }
   }, [loading]);
   const onPress = () => {

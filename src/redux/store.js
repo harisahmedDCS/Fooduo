@@ -3,10 +3,11 @@ import thunk from 'redux-thunk';
 import {composeWithDevTools} from 'redux-devtools-extension';
 import alert from './reducers/alert';
 import auth from './reducers/auth';
-
+import tick from './reducers/ui';
 const reducer = combineReducers({
   alert,
   auth,
+  tick,
 });
 
 const initialState = {};

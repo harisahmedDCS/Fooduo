@@ -2,8 +2,8 @@ import React from 'react';
 import {StyleSheet, Text, View, ImageBackground} from 'react-native';
 import {DrawerContentScrollView, DrawerItem} from '@react-navigation/drawer';
 import {useDispatch, useSelector} from 'react-redux';
-import {logout} from '../redux/actions/auth';
-import Profile from '../../src/assets/images/profile.jpg';
+import Profile from '../../assets/images/profile.jpg';
+import {logout} from '../../redux/actions/auth';
 
 const DrawerContent = props => {
   const dispatch = useDispatch();

@@ -4,15 +4,13 @@ import {
   Text,
   View,
   ScrollView,
-  KeyboardAvoidingView,
-  Platform,
   TouchableOpacity,
   TextInput,
 } from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import OrientationLoadingOverlay from 'react-native-orientation-loading-overlay';
 import Button from '../../src/components/Button';
-import Input from '../../src/components/Input';
+
 import {
   SWidth,
   SHeight,
