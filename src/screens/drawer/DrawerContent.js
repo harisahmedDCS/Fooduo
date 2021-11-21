@@ -4,12 +4,15 @@ import {DrawerContentScrollView, DrawerItem} from '@react-navigation/drawer';
 import {useDispatch, useSelector} from 'react-redux';
 import Profile from '../../assets/images/profile.jpg';
 import {logout} from '../../redux/actions/auth';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import {SHeight} from '../../utils/Constants';
 
 const DrawerContent = props => {
   const dispatch = useDispatch();
   const selector = useSelector(state => state.auth);
   const {loading} = selector;
   console.log('@@@@', loading);
+
   return (
     <View style={{flex: 1}}>
       <View style={styles.header}>
@@ -30,7 +33,18 @@ const DrawerContent = props => {
         <View style={styles.drawerContent}>
           <View style={styles.drawerSection}>
             <DrawerItem
+              icon={() => (
+                <MaterialIcons name="logout" size={25} color="#fff" />
+              )}
+              labelStyle={{
+                color: '#fff',
+                fontSize: 15,
+                fontWeight: 'bold',
+              }}
               label="Logout"
+              style={{
+                backgroundColor: '#FFC27C',
+              }}
               onPress={() => {
                 dispatch(logout());
                 if (loading !== false) {

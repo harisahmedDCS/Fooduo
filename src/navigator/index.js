@@ -22,11 +22,17 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {useDispatch, useSelector} from 'react-redux';
 import More from '../screens/BottomTab/More';
-import Homes from '../screens/BottomTab/Main';
-import Main from '../screens/BottomTab/Main';
+import Homes from '../screens/BottomTab/Menu';
+import Main from '../screens/BottomTab/Menu';
 import {tick} from '../redux/actions/ui';
 import Svg, {Path} from 'react-native-svg';
 import LinearGradient from 'react-native-linear-gradient';
+import Profile from '../screens/BottomTab/Profile';
+import Offers from '../../src/screens/BottomTab/Offers';
+import Reset from '../screens/ForgetPassword/Reset';
+import Otp from '../screens/ForgetPassword/Otp';
+import NewPassword from '../screens/ForgetPassword/NewPassword';
+import PaymentDetails from '../screens/BottomTab/payment/PaymentDetails';
 //Drawer Navigator
 const DrawerNavigator = props => {
   const dispatch = useDispatch();
@@ -102,12 +108,14 @@ const BottomTab = () => {
               </Text>
             </View>
           ),
+          headerShown: false,
         })}
         component={Main}
       />
       <Bottom.Screen
         name="Offer"
         options={{
+          headerShown: false,
           tabBarIcon: ({focused}) => (
             <View>
               <MaterialCommunityIcons
@@ -122,7 +130,7 @@ const BottomTab = () => {
             </View>
           ),
         }}
-        component={LoginScreen}
+        component={Offers}
       />
       <Bottom.Screen
         name="Home"
@@ -151,6 +159,7 @@ const BottomTab = () => {
       />
       <Bottom.Screen
         options={{
+          headerShown: false,
           tabBarIcon: ({focused}) => (
             <View>
               <FontAwesome
@@ -166,10 +175,11 @@ const BottomTab = () => {
           ),
         }}
         name="Settings"
-        component={SignUpScreen}
+        component={Profile}
       />
       <Bottom.Screen
         options={{
+          headerShown: false,
           tabBarIcon: ({focused}) => (
             <View>
               <AntDesign
@@ -189,6 +199,16 @@ const BottomTab = () => {
         }}
         name="More"
         component={More}
+      />
+      <Bottom.Screen
+        name="PaymentDetails"
+        component={PaymentDetails}
+        options={{
+          headerShown: false,
+          tabBarItemStyle: {
+            display: 'none',
+          },
+        }}
       />
     </Bottom.Navigator>
   );
@@ -218,6 +238,21 @@ const StackNavigator = () => {
         <Stack.Screen
           name="SignUp"
           component={SignUpScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Reset"
+          component={Reset}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Otp"
+          component={Otp}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="NewPassword"
+          component={NewPassword}
           options={{headerShown: false}}
         />
       </Stack.Navigator>

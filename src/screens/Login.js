@@ -51,7 +51,7 @@ const LoginScreen = ({navigation}) => {
   console.log('loading', loading);
   console.log('load', load);
   return (
-    <ScrollView style={{top: -10}} showsVerticalScrollIndicator={false}>
+    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       {load ? null : (
         <OrientationLoadingOverlay
           visible={true}
@@ -60,11 +60,13 @@ const LoginScreen = ({navigation}) => {
           messageFontSize={24}
         />
       )}
-      <View style={styles.container}>
+
+      <View style={{alignItems: 'center'}}>
         <Text style={styles.login}>Login</Text>
         <Text style={styles.loginDetails}>Add your details to login</Text>
         <TextInput
-          placeholder="email"
+          placeholder="Email"
+          keyboardType="email-address"
           value={email}
           placeholderTextColor={SecondaryFontColor}
           style={styles.input}
@@ -72,8 +74,8 @@ const LoginScreen = ({navigation}) => {
         />
         <TextInput
           value={password}
-          placeholder="email"
-          keyboardType="email-address"
+          placeholder="Password"
+          keyboardType="number-pad"
           placeholderTextColor={SecondaryFontColor}
           style={styles.input}
           onChangeText={val => onChangeText('password', val)}
@@ -92,6 +94,12 @@ const LoginScreen = ({navigation}) => {
           navigation={navigation}
           // ...rest
         />
+        <TouchableOpacity
+          activeOpacity={0.8}
+          onPress={() => navigation.navigate('Reset')}
+          style={{marginTop: 10}}>
+          <Text>Forgot your password?</Text>
+        </TouchableOpacity>
         <View style={{flexDirection: 'row', marginTop: 20}}>
           <Text>Dont't have an account?</Text>
           <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
@@ -107,9 +115,8 @@ export default LoginScreen;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: 'center',
     padding: 5,
+    backgroundColor: '#fff',
   },
   input: {
     height: 55,
@@ -124,7 +131,7 @@ const styles = StyleSheet.create({
   login: {
     fontSize: 32,
     fontWeight: 'bold',
-    marginTop: 400,
+    marginTop: 380,
     color: 'black',
   },
   loginDetails: {

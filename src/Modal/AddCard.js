@@ -1,14 +1,14 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 
-const Main = () => {
+const AddCard = () => {
   return (
     <View>
-      <Text>Main</Text>
+      <Text>sss</Text>
     </View>
   );
 };
 
-export default Main;
+export default AddCard;
 
 const styles = StyleSheet.create({});

@@ -45,14 +45,16 @@ const SignUpScreen = ({navigation}) => {
     fontSize: 20,
     color: '#fff',
     alignItems: 'center',
-    padding: 8,
+    padding: 12,
   };
   const onSubmit = () => {
     dispatch(register({name, email, password}));
   };
 
   return (
-    <ScrollView style={{top: -10}} showsVerticalScrollIndicator={false}>
+    <ScrollView
+      style={{flex: 1, backgroundColor: '#fff'}}
+      showsVerticalScrollIndicator={false}>
       <View style={styles.container}>
         <Text style={styles.login}>Sign Up</Text>
         <Text style={styles.loginDetails}>Add your details to sign up</Text>
@@ -124,6 +126,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 5,
     marginTop: -30,
+    backgroundColor: '#fff',
   },
   login: {
     fontSize: 32,

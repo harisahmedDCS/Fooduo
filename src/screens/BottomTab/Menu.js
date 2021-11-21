@@ -9,15 +9,19 @@ import {
   FlatList,
   Image,
   ScrollView,
+  ImageBackground,
 } from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import OrientationLoadingOverlay from 'react-native-orientation-loading-overlay';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {Picker} from '@react-native-picker/picker';
 import {
   PlaceholderColor,
   PrimaryFontCOlor,
   SecondaryFontColor,
+  SWidth,
+  MainColor,
 } from '../../utils/Constants';
 import PopularRestaurant from '../../components/PopularRestaurant';
 
@@ -41,7 +45,7 @@ const Item = ({state}) => {
   );
 };
 
-const Home = () => {
+const Main = () => {
   useEffect(() => {
     const backAction = () => {
       BackHandler.exitApp();
@@ -60,40 +64,37 @@ const Home = () => {
   const {loading} = auth;
   const [selectedValue, setSelectedValue] = useState('java');
   const [email, setEmail] = useState('');
-  const DATA = [
+  const data = [
     {
-      id: '1',
-      img: require('../../assets/images/food1.jpg'),
-      title: 'Italian',
+      title: 'Minute By TukTuk',
+      rating: 4.9,
+      totalRating: '(124 ratings) Cafe',
+      type: 'Western Food',
+      img: require('../../assets/images/meat1.jpg'),
     },
     {
-      id: '2',
-      img: require('../../assets/images/food2.jpg'),
-      title: 'Spanish',
+      title: 'DE NOIR',
+      rating: 4.9,
+      totalRating: '(124 ratings) Cafe',
+      type: 'Western Food',
+      img: require('../../assets/images/meat2.jpg'),
     },
     {
-      id: '3',
-      img: require('../../assets/images/food3.jpg'),
-      title: 'German',
+      title: 'Portugess',
+      rating: 4.9,
+      totalRating: '(124 ratings) Cafe',
+      type: 'Western Food',
+      img: require('../../assets/images/meat3.jpg'),
     },
     {
-      id: '4',
-      img: require('../../assets/images/food4.jpg'),
-      title: 'Chineese',
+      title: 'BBQ in spain',
+      rating: 4.9,
+      totalRating: '(124 ratings) Cafe',
+      type: 'Western Food',
+      img: require('../../assets/images/meat4.jpg'),
     },
   ];
-  const renderItem = ({item}) => {
-    state = {
-      img: item.img,
-      title: item.title,
-      id: item.id,
-    };
-    return (
-      <View>
-        <Item state={state} />
-      </View>
-    );
-  };
+
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <View style={{margin: 20}}>
@@ -103,29 +104,25 @@ const Home = () => {
             flexDirection: 'row',
             justifyContent: 'space-between',
           }}>
-          <View>
-            <Text style={{fontWeight: 'bold', fontSize: 18}}>
-              Good Morning Akila!
+          <View style={{flex: 1}}>
+            <MaterialIcons name="arrow-back-ios" size={25} color="#000" />
+          </View>
+          <View style={{flex: 8}}>
+            <Text style={{fontWeight: 'bold', fontSize: 18, color: '#000'}}>
+              Deserts
             </Text>
           </View>
-          <View style={{justifyContent: 'flex-end'}}>
+          <View>
             <MaterialIcons name="shopping-cart" size={25} color="#000" />
           </View>
         </View>
-        <Picker
-          selectedValue={selectedValue}
-          dropdownIconColor="orange"
-          style={{height: 50, width: 200, fontWeight: 'bold'}}
-          onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}>
-          <Picker.Item label="Current Location" value="java" />
-          <Picker.Item label="airport" value="js" />
-        </Picker>
         <View
           style={[
             styles.input,
             {
               flexDirection: 'row',
               alignItems: 'center',
+              marginTop: 15,
             },
           ]}>
           <MaterialIcons name="search" size={25} color="#000" />
@@ -137,22 +134,45 @@ const Home = () => {
             onChangeText={setEmail}
           />
         </View>
-        <View style={styles.flatListContainer}>
-          <FlatList
-            data={DATA}
-            renderItem={renderItem}
-            keyExtractor={item => item.id}
-            horizontal={true}
-            showsHorizontalScrollIndicator={false}
-          />
-        </View>
       </View>
-      <PopularRestaurant />
+      {/* menu */}
+      <View>
+        {data.map((item, key) => {
+          return (
+            <View key={key} style={{marginBottom: 10}}>
+              <ImageBackground
+                source={item.img}
+                style={{
+                  height: 180,
+                  width: SWidth,
+                }}>
+                <View style={styles.imageText}>
+                  <Text style={styles.txt}>{item.title}</Text>
+                </View>
+                <View style={styles.row}>
+                  <View>
+                    <FontAwesome name="star" size={22} color={MainColor} />
+                  </View>
+                  <View>
+                    <Text style={{color: '#fff'}}>{item.rating}</Text>
+                  </View>
+                  <View>
+                    <Text style={{color: '#fff'}}>{item.totalRating}</Text>
+                  </View>
+                  <View style={{marginLeft: 15}}>
+                    <Text style={{color: '#fff'}}>{item.type}</Text>
+                  </View>
+                </View>
+              </ImageBackground>
+            </View>
+          );
+        })}
+      </View>
     </ScrollView>
   );
 };
 
-export default Home;
+export default Main;
 
 const styles = StyleSheet.create({
   container: {
@@ -173,5 +193,17 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginLeft: 10,
     marginTop: 10,
+    color: '#fff',
+  },
+  imageText: {
+    marginTop: 100,
+    marginLeft: 20,
+  },
+  row: {
+    flexDirection: 'row',
+    marginLeft: 20,
+    marginRight: 20,
+    alignItems: 'center',
+    marginBottom: 10,
   },
 });
