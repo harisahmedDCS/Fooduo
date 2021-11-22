@@ -46,7 +46,7 @@ const NewPassword = ({navigation}) => {
           onChangeText={setNewPassword}
         />
         <TouchableOpacity
-          onPress={() => navigation.navigate('NewPassword')}
+          onPress={() => navigation.navigate('Login')}
           activeOpacity={0.8}
           style={[styles.input, {backgroundColor: MainColor}]}>
           <Text
